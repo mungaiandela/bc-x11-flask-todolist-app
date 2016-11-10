@@ -1,0 +1,19 @@
+<p>Todo Page</p>
+{% block content %}
+{% from "headers.html" import render_field %}
+   <section>
+    <ul id="todolist"></ul>
+    <form action="{{url_for('todo')}}" method="post">
+      <!-- <dl>
+          {{ render_field(form.title) }}
+          {{ render_field(form.desc) }}
+      </dl> -->
+      {{ form.csrf_token }}
+      {{ form.title }}
+      {{ form.desc }}
+      <p>
+          <input type="submit" value="Add">
+      </p> 
+    </form>
+  </section>
+{% endblock %}

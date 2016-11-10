@@ -1,0 +1,38 @@
+<p>Index page</p>
+
+<style>
+	.pad: 1px;
+</style>
+
+<div>
+<a href="/todo">Create todo</a>
+</div>
+
+<div>
+
+	<table border = '0' style="width:100%">
+	  <!-- <tr>
+	    <th></th>
+	  </tr> -->
+	  <tbody>
+	  	{% for todoitem in todolist %}
+		  <td class="pad">
+		  	<table border = '1'>
+				<tr>
+					<th>
+						{{todoitem.title}}
+					</th>
+				</tr>
+				<tr>
+					<td>
+						{{ todoitem.desc }}
+					</td>
+				</tr>
+			</table>
+		  </td>
+		{% endfor %}
+	  </tbody>
+</table>
+
+</div>
+
