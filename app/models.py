@@ -1,5 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from app.views import app
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 db = SQLAlchemy(app)
 
@@ -15,12 +17,30 @@ class User(db.Model):
         self.password = password
 
     __tablename__ = 'table_users'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(20), unique=True)
     firstname = db.Column(db.String(20))
     lastname = db.Column(db.String(20))
-    email = db.Column(db.String(20))
+    email = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(20))
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id
 
     def __repr__(self):
         return "<User(firstname='%s', lastname = '%s', email = '%s')>"(self.firstname, self.lastname, self.email)
@@ -35,7 +55,7 @@ class User_data(db.Model):
         self.desc = desc
 
     __tablename__ = 'table_users_data'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.String(20))
     desc = db.Column(db.String(20))
 
