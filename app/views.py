@@ -29,7 +29,7 @@ login_manager.login_view = 'login'
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        db.create_all()
+
         todolist = db.session.query(User_data).all()
         if todolist is False:
             db.create_all()
@@ -64,20 +64,12 @@ def load_user(email):
 def login():
     form = loginForm()
     if form.validate_on_submit():
-        # Login and validate the user.
-        # user should be an instance of your `User` class
-        login_user(u_user)
-
-        flask.flash('Logged in successfully.')
-
-        next = flask.request.args.get('next')
-        # next_is_valid should check if the user has valid
-        # permission to access the `next` url
-        if not next_is_valid(next):
-            return flask.abort(400)
-
-        return flask.redirect(next or flask.url_for('index'))
-    return flask.render_template('login.html', form=form)
+        u_user = User.query.filter_by(email=form.email.data).first()
+        if u_user is not None and user.verify_password(form.password.data):
+            login_user(user, form.remember_me.data)
+            return redirect(request.args.get('next') or url_for('400'))
+        flash('Invalid username or password.')
+    return render_template('400.html', form=form)
 
 
 @login_required

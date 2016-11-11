@@ -19,7 +19,7 @@ class todoForm(Form):
 
 
 class loginForm(Form):
-    username = StringField(validators.Required(message='Enter username'))
+    email = StringField(validators.Required(message='Enter email'))
 
     password = PasswordField(validators.Required(message='Enter password'))
 
