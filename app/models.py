@@ -40,7 +40,7 @@ class User(db.Model):
         return False
 
     def get_id(self):
-        return self.id
+        return unicode(self.email)
 
     def __repr__(self):
         return "<User(firstname='%s', lastname = '%s', email = '%s')>"(self.firstname, self.lastname, self.email)

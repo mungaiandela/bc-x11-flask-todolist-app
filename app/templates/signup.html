@@ -1,7 +1,12 @@
-{% block body %}
+{% extends "base.html" %}
+{% block title %}
+  T0D0 APP
+{% endblock %}
+{% block content %}
 <div>
-  <form action="" method=post class="form-horizontal">
-    <h2>Sign up for FlaskLogin(Todo) Application </h2>
+  <form action="/signup" method=post class="form-horizontal">
+  <div class="text-center">
+    <h2>Sign up!</h2>
     <div class="control-group">
         <div class="controls">
           <input type="text" id="username" name="username" class="input-xlarge"
@@ -9,7 +14,7 @@
             required>
         </div>
     </div>
-
+    <br>
     <div class="control-group">
         <div class="controls">
           <input type="text" id="firstname" name="firstname" class="input-xlarge"
@@ -17,7 +22,7 @@
             required>
         </div>
     </div>
-
+    <br>
     <div class="control-group">
         <div class="controls">
           <input type="lastname" id="lastname" name="lastname" class="input-xlarge"
@@ -25,7 +30,7 @@
             required>
         </div>
     </div>
-
+    <br>
      <div class="control-group">
         <div class="controls">
           <input type="email" id="email" name="email" class="input-xlarge"
@@ -33,7 +38,7 @@
             required>
         </div>
 	</div>
-
+  <br>
 	<div class="control-group">
         <div class="controls">
           <input type="text" id="password" name="password" class="input-xlarge"
@@ -41,7 +46,7 @@
             required>
         </div>
     </div>
-
+    <br>
     <div class="control-group">
         <div class="controls">
           <button type="submit" class="btn btn-success">Signup</button>
@@ -50,5 +55,6 @@
 
      
   </form>
+  </div>
  <div>
 {% endblock %}

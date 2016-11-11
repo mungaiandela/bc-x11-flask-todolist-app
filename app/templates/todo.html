@@ -1,19 +1,25 @@
-<p>Todo Page</p>
+{% extends "base.html" %}
+{% block title %}
+  T0D0 APP
+{% endblock %}
+
 {% block content %}
+<h2>Todo Page</h2>
 {% from "headers.html" import render_field %}
-   <section>
+    <div class="jumbotron text-center">
+      <h2>Enter your title and description respectively</h2>
+    </div>
+   <section class="text-center">
     <ul id="todolist"></ul>
     <form action="{{url_for('todo')}}" method="post">
-      <!-- <dl>
-          {{ render_field(form.title) }}
-          {{ render_field(form.desc) }}
-      </dl> -->
+     <dl>
       {{ form.csrf_token }}
       {{ form.title }}
       {{ form.desc }}
-      <p>
-          <input type="submit" value="Add">
-      </p> 
+      </dl>
+      <button class="btn btn-primary" type="submit">
+          Add
+      </button>
     </form>
   </section>
 {% endblock %}

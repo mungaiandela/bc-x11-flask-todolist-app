@@ -1,15 +1,22 @@
-from flask import Flask, render_template, request, redirect, url_for, session, abort, flash
+import flask
+from flask import Flask, flash, render_template, request, redirect, url_for, session
 from flask.ext.login import LoginManager
 from flask.ext.login import login_user, logout_user, current_user, login_required
+from flask.ext.wtf import Form
+from app.forms import indexForm, todoForm, loginForm
 import os
-from app.forms import indexForm, todoForm
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + \
+    os.path.join(basedir, 'todo.db')
+app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.secret_key = 'Development_key'
 
 from app.models import db, User_data, User
+u_userdata = User_data('title', 'desc')
+u_user = User('username', 'firstname', 'lastname', 'email', 'password')
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -17,11 +24,14 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 
+@login_required
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
         todolist = db.session.query(User_data).all()
+        if todolist is False:
+            db.create_all()
         return render_template('index.html', todolist=todolist)
     else:
         todo = User_data.query.all()
@@ -44,34 +54,36 @@ def todo():
         return redirect(url_for('index'))
 
 
+@login_manager.user_loader
+def load_user(email):
+    return User.query.get(email)
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'GET':
-        return render_template('/login.html')
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        remember_me = False
-    if 'remember_me' in request.form:
-        remember_me = True
-    registered_user = User.query.filter_by(username=username).first()
-    if registered_user and registered_user.check_password(password):
-        flash('Username is invalid', 'error')
-        return redirect(url_for('login'))
-    login_user(registered_user, remember=remember_me)
-    flash('Logged in successfully')
-    return redirect(url_for('index'))
+    form = loginForm()
+    if form.validate_on_submit():
+        # Login and validate the user.
+        # user should be an instance of your `User` class
+        login_user(u_user)
+
+        flask.flash('Logged in successfully.')
+
+        next = flask.request.args.get('next')
+        # next_is_valid should check if the user has valid
+        # permission to access the `next` url
+        if not next_is_valid(next):
+            return flask.abort(400)
+
+        return flask.redirect(next or flask.url_for('index'))
+    return flask.render_template('login.html', form=form)
 
 
-@login_manager.user_loader
-def load_user(id):
-    return User.query.get(int(id))
-
-
+@login_required
 @app.route('/logout')
 def logout():
-    logout_user()
-    return redirect(url_for('index'))
+    db.drop_all()
+    return redirect(url_for('login'))
 
 
 @app.route('/signup', methods=['GET', 'POST'])

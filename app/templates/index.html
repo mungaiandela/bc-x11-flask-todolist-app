@@ -1,30 +1,21 @@
-<p>Index page</p>
-
-<style>
-	.pad: 1px;
-</style>
-
+{% extends "base.html" %}
+{% block title %}
+	T0D0 APP
+{% endblock %}
+{% block content%}
 <div>
-<a href="/todo">Create todo</a>
-</div>
-
-<div>
-
-	<table border = '0' style="width:100%">
-	  <!-- <tr>
-	    <th></th>
-	  </tr> -->
+	<table class="table table-striped table-bordered table-hover table condensed" border = '0.9' style="width:100%" border-radius="30px">
 	  <tbody>
 	  	{% for todoitem in todolist %}
-		  <td class="pad">
-		  	<table border = '1'>
-				<tr>
-					<th>
+		  <td class="active">
+		  	<table class="table" border = '1' border-radius="30px">
+				<tr class="success">
+					<th class="warning">
 						{{todoitem.title}}
 					</th>
 				</tr>
-				<tr>
-					<td>
+				<tr class="danger">
+					<td class="info">
 						{{ todoitem.desc }}
 					</td>
 				</tr>
@@ -33,6 +24,7 @@
 		{% endfor %}
 	  </tbody>
 </table>
-
 </div>
+
+{% endblock %}
 

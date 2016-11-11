@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  {% block head %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity=" sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+  {% endblock %} 
+  <style>
+    h1, h2, h3, h4, h5, h6 {
+    font-family: 'Slabo';
+    }
+    p, div {
+    font-family: 'Slabo';
+    }
+    body{
+    background: url({{ url_for('static', filename='canva.jpg') }});
+    background-color: #BBDEFB;
+    }
+  </style>
+  </head>
+
+  <body>
+
+      {% block nav %}
+<nav class="navbar navbar-default">
+<button class="btn btn-default"><a href="/index">Home</a></button>
+<button class="btn btn-default"><a href="/todo">new to-do</button>
+<button class="btn btn-default"><a href="/signup">Signup</a></button>
+<button class="btn btn-default pull-right"><a href="/logout">logout</a></button>
+<button class="btn btn-warning"><a href="/login">login</a></button>
+</nav>
+      {% block content %}
+      <script>
+          function allowDrop(ev) {
+              ev.preventDefault();
+          }
+
+          function drag(ev) {
+              ev.dataTransfer.setData("text", ev.target.id);
+          }
+
+          function drop(ev) {
+              ev.preventDefault();
+              var data = ev.dataTransfer.getData("text");
+              ev.target.appendChild(document.getElementById(data));
+          }
+      </script>
+
+      <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+        <img id="drag1" src="img_logo.gif" draggable="true"
+        ondragstart="drag(event)" width="336" height="69">
+      {% endblock %}
+    {% endblock %}
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+
+</html>

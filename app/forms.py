@@ -1,6 +1,5 @@
-from wtforms import Form
-from wtforms import StringField
-from wtforms import SubmitField, validators
+from flask_wtf import Form
+from wtforms import StringField, SubmitField, validators, PasswordField
 
 
 class indexForm(Form):
@@ -20,4 +19,8 @@ class todoForm(Form):
 
 
 class loginForm(Form):
-    pass
+    username = StringField(validators.Required(message='Enter username'))
+
+    password = PasswordField(validators.Required(message='Enter password'))
+
+    submit = SubmitField('Submit')
