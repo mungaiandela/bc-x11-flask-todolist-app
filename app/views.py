@@ -29,6 +29,7 @@ login_manager.login_view = 'login'
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
+        db.create_all()
         todolist = db.session.query(User_data).all()
         if todolist is False:
             db.create_all()
