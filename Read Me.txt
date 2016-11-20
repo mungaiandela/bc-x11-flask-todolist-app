@@ -1,0 +1,18 @@
+**************************************************************
+READ ME
+**************************************************************
+how to use(locally) todoapp
+______________________________________________________________
+1. create a virtualenv called flask
+	sudo apt-get install python-virtualenv
+2. create a folder called flask to install the virtual environment into
+	$ mkdir flask
+	$ cd flask
+	$ virtualenv flask
+3. run the app in the virtual environment using the command
+	.  flask/bin/activate
+4. install python3 into the virtualenv using the command
+	pip install python3
+5. pip install all the items on the requirements.txt list
+	pip install -r requirements.txt
+6. Thank you for using this app. Hosting is yet since login and sign up functions are in development.

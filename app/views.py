@@ -62,6 +62,7 @@ def load_user(email):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    db.create_all()
     form = loginForm()
     if form.validate_on_submit():
         u_user = User.query.filter_by(email=form.email.data).first()
