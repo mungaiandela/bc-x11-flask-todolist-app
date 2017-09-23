@@ -5,7 +5,7 @@ from flask_restful import Api
 
 from app import models
 from config import app_configuration
-from app.views.assets import AssetResource
+# from app.views.assets import AssetResource
 
 
 def create_app(environment):
@@ -15,9 +15,9 @@ def create_app(environment):
     models.db.init_app(app)
     migrate = Migrate(app,models.db)
     api = Api(app)
-    api.add_resource(AssetResource,
-                     '/api/v1/assets', '/api/v1/assets/',
-                     endpoint='assets')
+    # api.add_resource(AssetResource,
+    #                  '/api/v1/assets', '/api/v1/assets/',
+    #                  endpoint='assets')
     return app
 
 app = create_app(os.getenv("FLASK_CONFIG"))
