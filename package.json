@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/mungaiandela/bc-x11-flask-todolist-app#readme",
   "devDependencies": {
+    "node": "8.5.0",
     "bower": "^1.8.2"
   },
   "scripts": {
