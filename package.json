@@ -1,29 +1,29 @@
 {
-  "name": "bamba-todolist-app",
-  "version": "1.0.0",
-  "description": "Save tasks and complete them later",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mungaiandela/bc-x11-flask-todolist-app.git"
-  },
-  "author": "Martin Mungai",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mungaiandela/bc-x11-flask-todolist-app/issues"
-  },
-  "dependencies": {
-    "bower": "^1.8.2",
-    "node": "8.5.0",
-    "npm": "^5.4.2"
-  },
-  "homepage": "https://github.com/mungaiandela/bc-x11-flask-todolist-app#readme",
-  "devDependencies": {
-    "bower": "^1.8.2",
-    "node": "8.5.0",
-    "npm": "^5.4.2"
-  },
-  "scripts": {
-    "postinstall": "bower cache clean && bower install"
-  }
+    "name": "bamba-todolist-app",
+    "version": "1.0.0",
+    "description": "Save tasks and complete them later",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mungaiandela/bc-x11-flask-todolist-app.git"
+    },
+    "author": "Martin Mungai",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mungaiandela/bc-x11-flask-todolist-app/issues"
+    },
+    "dependencies": {
+        "bower": "^1.8.2",
+        "node": "8.5.0",
+        "npm": "^5.4.2"
+    },
+    "homepage": "https://github.com/mungaiandela/bc-x11-flask-todolist-app#readme",
+    "devDependencies": {
+        "bower": "^1.8.2",
+        "node": "8.5.0",
+        "npm": "^5.4.2"
+    },
+    "scripts": {
+        "postinstall": "bower cache clean && bower install"
+    }
 }
