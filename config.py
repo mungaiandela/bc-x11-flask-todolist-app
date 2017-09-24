@@ -21,6 +21,17 @@ class DevelopmentConfiguration(Config):
     DEBUG = True
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
+    OAUTH_CREDENTIALS = {
+        'facebook': {
+            'id': os.getenv("FB_ID"),
+            'secret': os.getenv("FB_SECRET")
+        },
+        'twitter': {
+            'id': os.getenv("TWITTER_ID"),
+            'secret': os.getenv("TWITTER_SECRET")
+        }
+    }
 
 
 class TestingConfiguration(Config):
