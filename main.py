@@ -3,14 +3,12 @@ import os
 from flask import Flask, flash, redirect, url_for, render_template
 from flask_login import login_user, logout_user, current_user
 from flask_migrate import Migrate
-from flask_restful import Api
 
 from app import models
 from app.models import db
 from app.models import lm
 from app.models import User
 from config import app_configuration
-# from app.views.assets import AssetResource
 
 from oauth import OAuthSignIn
 
@@ -23,10 +21,6 @@ def create_app(environment):
     db.init_app(app)
     lm.init_app(app)
     migrate = Migrate(app, db)
-    api = Api(app)
-    # api.add_resource(AssetResource,
-    #                  '/api/v1/assets', '/api/v1/assets/',
-    #                  endpoint='assets')
 
     @lm.user_loader
     def load_user(id):  
@@ -34,8 +28,11 @@ def create_app(environment):
 
     @app.route('/')
     def index():
-        return render_template('index.html')
+        return render_template('login.html')
 
+    @app.route('/tasks')
+    def crud_tasks():
+        return render_template('tasks.html')
 
     @app.route('/logout')
     def logout():
