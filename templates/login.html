@@ -1,9 +1,4 @@
-<html>
-
-<head>
-    <title>BAMBA TODOLIST APP</title>
-</head>
-
+ {% extends "base.html" %}
 <body>
     <h1>Sign in with your favorite social</h1>
     {% for message in get_flashed_messages() %}
@@ -19,7 +14,7 @@
 </body>
 
 <script>
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
         FB.init({
             appId: '{your-app-id}',
             cookie: true,
@@ -29,7 +24,7 @@
         FB.AppEvents.logPageView();
     };
 
-    (function(d, s, id) {
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {
             return;
@@ -39,6 +34,5 @@
         js.src = "//connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-</script>
 
-</html>
+</script>
