@@ -1,2 +1,2 @@
-web: bower install
+web: npm install
 web: gunicorn main:app

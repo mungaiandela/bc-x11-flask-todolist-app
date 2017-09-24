@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Save tasks and complete them later",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mungaiandela/bc-x11-flask-todolist-app.git"
@@ -18,5 +15,8 @@
   "homepage": "https://github.com/mungaiandela/bc-x11-flask-todolist-app#readme",
   "devDependencies": {
     "bower": "^1.8.2"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install"
   }
 }
