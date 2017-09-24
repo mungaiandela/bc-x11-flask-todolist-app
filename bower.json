@@ -1,0 +1,21 @@
+{
+  "name": "bamba-todolist-app",
+  "homepage": "https://github.com/mungaiandela/bc-x11-flask-todolist-app",
+  "authors": [
+    "Martin Mungai"
+  ],
+  "description": "Save tasks and complete them later!",
+  "main": "",
+  "license": "leprech@un",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap": "v4.0.0-alpha.6",
+    "react": "^15.1.0"
+  }
+}

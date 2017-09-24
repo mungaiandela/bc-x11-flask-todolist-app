@@ -1,0 +1,23 @@
+{
+  "name": "bamba-todolist-app",
+  "version": "1.0.0",
+  "description": "Save tasks and complete them later",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node_modules/bower/bin/bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mungaiandela/bc-x11-flask-todolist-app.git"
+  },
+  "author": "Martin Mungai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mungaiandela/bc-x11-flask-todolist-app/issues"
+  },
+  "homepage": "https://github.com/mungaiandela/bc-x11-flask-todolist-app#readme",
+  "devDependencies": {
+    "bower": "^1.8.2"
+  }
+}
