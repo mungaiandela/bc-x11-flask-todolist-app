@@ -21,7 +21,7 @@ class DevelopmentConfiguration(Config):
     DEBUG = True
     SQLALCHEMY_ECHO = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
     OAUTH_CREDENTIALS = {
         'facebook': {
             'id': os.getenv("FB_ID"),
