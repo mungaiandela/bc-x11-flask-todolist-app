@@ -6,7 +6,7 @@
   ],
   "description": "Save tasks and complete them later!",
   "main": "",
-  "license": "leprech@un",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
